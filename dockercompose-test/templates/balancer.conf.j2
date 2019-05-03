@@ -1,0 +1,21 @@
+  upstream test {
+     server {{ webphpdb_host }}:{{ webphpdb_port }}; 
+  }
+
+
+  server {
+     listen 80; 
+     listen 443 ssl http2;
+     listen [::]:443 ssl http2;
+     ssl_certificate {{ ssl_certs_cert_path }};
+     ssl_certificate_key {{ ssl_certs_privkey_path }};
+     ssl_protocols TLSv1.2 TLSv1.1 TLSv1;
+
+
+     location / {
+        proxy_pass http://test;
+     }
+  }
+
+
+

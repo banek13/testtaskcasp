@@ -1,0 +1,16 @@
+---
+# defaults file for dockercompose-test
+
+VERSIONTAG: "0.2"
+webphpdb_host: webphpdb-symfony
+webphpdb_extport: "8182"
+webphpdb_port: "80"
+testtask_root_path: "/opt/{{ webphpdb_host  }}"
+testtask_webphpdb_path: "{{ testtask_root_path }}/{{ webphpdb_host }}"
+testtask_balancer_path: "{{ testtask_root_path }}/balancer"
+testtask_wwwfiles_path: "{{ testtask_root_path }}/wwwfiles"
+testtask_mysqldata_path: "{{ testtask_root_path }}/mysqlddata"
+ssl_certs_path: "/etc/nginx"
+ssl_certs_cert_path: "{{ ssl_certs_path }}/localhost.crt"
+ssl_certs_privkey_path: "{{ ssl_certs_path }}/localhost.key"
+domain: test.domain

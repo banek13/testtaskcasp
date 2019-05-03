@@ -1,0 +1,26 @@
+version: '3.1'
+
+services:
+
+  {{ webphpdb_host }}:
+    build: ./{{ webphpdb_host }}
+#    image: webphpdb:0.2
+    restart: always
+    container_name: "{{ webphpdb_host }}"
+    hostname: "{{ webphpdb_host }}"
+    volumes:
+      - {{ testtask_mysqldata_path }}:/var/lib/mysql
+      - {{ testtask_wwwfiles_path }}/{{ webphpdb_host }}:/app/symfony
+      - {{ testtask_wwwfiles_path }}/001-symfony.conf:/etc/apache2/sites-enabled/001-symfony.conf
+    ports:
+      - {{ webphpdb_extport }}:{{ webphpdb_port }}
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQLPASSWORD}
+    command: > 
+      sh -c "chown -R www-data:www-data /app/symfony/public &&
+             chown -R www-data:www-data /app/symfony/var/log &&
+             /wrapper_script.sh"
+
+  
+      
+
