@@ -107,4 +107,5 @@ EXPOSE 3306 33060
 #CMD ["mysqld"]
 COPY wrapper_script.sh /wrapper_script.sh
 RUN chmod +x /wrapper_script.sh
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh 
 #CMD /wrapper_script.sh
