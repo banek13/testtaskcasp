@@ -7,10 +7,11 @@ CHECK:
 ``` curl http://localhost:8181;
 curl http://localhost;
 curl --insecure https://localhost 
+```
 
 ## Task 3:
 
-ansible-playbook playbook-testtask.yml
+RUN: ``` ansible-playbook playbook-testtask.yml ```
 Check: the same as for tasks 1 & 2
 
 ## Task 4:
