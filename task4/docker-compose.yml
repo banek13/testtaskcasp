@@ -1,0 +1,25 @@
+version: '3.1'
+
+services:
+
+  webphpdb-symfony:
+    build: ./webphpdb-symfony
+    restart: always
+    container_name: "webphpdb-symfony"
+    hostname: "webphpdb-symfony"
+    volumes:
+      - ${PWD}/mysqlddata:/var/lib/mysql
+      - ${PWD}/wwwfiles/webphpdb-symfony:/app/symfony
+      - ${PWD}/wwwfiles/001-symfony.conf:/etc/apache2/sites-enabled/001-symfony.conf
+    ports:
+      - 8182:80
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQLPASSWORD}
+    command: > 
+      sh -c "chown -R www-data:www-data /app/symfony/public &&
+             chown -R www-data:www-data /app/symfony/var/log &&
+             /wrapper_script.sh"
+
+  
+      
+
