@@ -13,7 +13,7 @@ curl --insecure https://localhost
 
 RUN: ``` ansible-playbook playbook-testtask.yml ```
 
-Check: the same as for tasks 1 & 2
+CHECK: the same as for tasks 1 & 2
 
 ## Task 4:
 
