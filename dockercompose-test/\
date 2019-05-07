@@ -1,9 +1,0 @@
----
-# defaults file for dockercompose-test
-
-VERSIONTAG: 0.2
-webphpdb_host: webphpdb
-webphpdb_host: 8181
-webphpdb_port: 80
-~
-
