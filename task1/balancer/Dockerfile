@@ -1,2 +1,0 @@
-FROM nginx:1.15
-RUN rm -f /etc/nginx/conf.d/default.conf
