@@ -1,0 +1,33 @@
+version: '3.1'
+
+services:
+
+  webphpdb:
+    build: ./webphpdb
+    image: "webphpdb:${VERSIONTAG}"
+    restart: always
+    container_name: "webphpdb"
+    hostname: "webphpdb"
+    volumes:
+      - ${PWD}/mysqlddata:/var/lib/mysql
+      - ${PWD}/wwwfiles:/var/www/html
+    ports:
+      - 8181:80
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQLPASSWORD}
+    command: /wrapper_script.sh
+  
+      
+  balancer:
+    build: ./balancer
+    volumes:
+     - ${PWD}/balancer/balancer.conf:/etc/nginx/conf.d/balancer.conf
+     - ${PWD}//balancer/localhost.key:/etc/nginx/localhost.key
+     - ${PWD}//balancer/localhost.crt:/etc/nginx/localhost.crt
+    ports:
+     - "80:80"
+     - "443:443"
+    container_name: "nginx-balancer"
+    hostname: "nginx-balancer"
+    image: "nginx-balancer:${VERSIONTAG}"
+
