@@ -4,7 +4,7 @@ services:
 
   webphpdb:
     build: ./webphpdb
-    image: "webphpdb:0.2"
+    image: "webphpdb:${VERSIONTAG}"
     restart: always
     container_name: "webphpdb"
     hostname: "webphpdb"
@@ -29,5 +29,5 @@ services:
      - "443:443"
     container_name: "nginx-balancer"
     hostname: "nginx-balancer"
-    image: "nginx-balancer:0.2"
+    image: "nginx-balancer:${VERSIONTAG}"
 
